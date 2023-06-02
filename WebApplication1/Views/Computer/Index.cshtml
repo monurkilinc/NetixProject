@@ -1,0 +1,39 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+<h1>Bilgisayarlar</h1>
+<table class="table table-borderless">
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Serial No</th>
+        <th>Year Of Production</th>
+        <th>Operating System</th>
+        <th>Ram</th>
+        <th>Cpu</th>
+        <th>Graphic Card</th>
+        <th>Delete</th>
+        <th>Update</th>
+        
+    </tr>
+    @foreach (var computer in Model?.Computers)
+    {
+        <tr>
+            <td>@computer.ComputerId</td>
+            <td>@computer.ComputerBrand</td>
+            <td>@computer.ComputerSerialNo</td>
+            <td>@computer.ComputerYearOfProduction</td>
+            <td>@computer.OperatingSystem</td>
+            <td>@computer.Ram</td>
+            <td>@computer.CPU</td>
+            <td>@computer.GraphicCard</td>
+            <td><a href="~/Computer/DeleteComputer/@computer.ComputerId" class="btn btn-danger">Delete</a></td>
+            <td><a href="~/Computer/EditComputer/@computer.ComputerId" class="btn btn-danger">Update</a></td>
+            
+        </tr>
+    }
+</table>
+<a href="~/Computer/AddComputer/" class="btn btn-primary">Add Computer</a>

@@ -1,0 +1,87 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+@{
+    ViewData["Title"] = "AddService";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+<h1>Servis Ekle</h1>
+<div class="form-style-5">
+    <form asp-action="AddService" method="post">
+        <fieldset>
+            <label for="text">ComputerId:</label>
+            <input type="text" name="ComputerId" value="@(Model?.Service?.ComputerId)" placeholder="">
+
+            <input type="hidden" name="ServiceId" value="@(Model?.Service?.ServiceId)" placeholder="">
+
+            <label for="text">ServisStatus:</label>
+            <select id="text" name="ServisStatus" value="@(Model?.Service?.ServisStatus)">
+                <option value="Open">Open</option>
+                <option value="Close">Close</option>
+            </select>
+            <label for="text">Priority:</label>
+            <select id="text" name="Priority" value="@(Model?.Service?.ServicePriority)">
+                    <option value="Acil">Acil</option>
+                    <option value="Normal">Normal</option>
+            </select>
+            <label for="text">Personal Name:</label>
+            <select id="text" name="Personal.PersonalNameSurname:">
+                        @if (Model != null && Model.Computer != null)
+                        {
+                    <option value="@(Model?.Computer?.Personal.PersonalNameSurname)">@(Model?.Service?.Computer.Personal.PersonalNameSurname)</option>
+                        }
+            </select>
+            <label for="text">Service Worker:</label>
+            <select id="text" name="Service Worker:" value="@(Model?.Service?.ServiceWorker)">
+                <optgroup label="*">
+                    <option value="">Bülent Yentimur</option>
+                    <option value="">Osman Bilici</option>
+                    <option value="">Öyküm Mumuogulları</option>
+                    <option value="">Ahmet Konuk</option>
+                    <option value="">Safiye Şahin</option>
+                </optgroup>
+            </select>
+
+            <label for="text">Date Entry:</label>
+            <input type="date" name="DeviceDateEntry" value="@(Model?.Service?.DeviceDateEntry)" placeholder="">
+
+            <label for="text">Deliver Entry:</label>
+            <input type="date" name="DateEntry" value="@(Model?.Service?.DeviceDateEntry)" placeholder="">
+
+            <label for="text">Delay Status:</label>
+            <input type="text" name="ServiceDelayStatus" value="@(Model?.Service?.ServiceDelayStatus)" placeholder="">
+
+            <label for="text">Device Processing Time:</label>
+            <input type="text" name="DeviceProcessingTime" value="@(Model?.Service?.DeviceProcessingTime)" placeholder="">
+
+            <label for="text">Service Reason:</label>
+            <input type="text" name="DeviceServiceReason" value="@(Model?.Service?.DeviceServiceReason)" placeholder="">
+
+            <label for="text">Changing Parts:</label>
+            <select id="text" name="@(Model?.Service?.DeviceChangingParts)">
+                <optgroup label="*">
+                    <option value="Ram">Ram</option>
+                    <option value="İşlemci">İşlemci</option>
+                    <option value="Ana Kart">Ana Kart</option>
+                    <option value="Bakım">Bakım</option>
+                    <option value="Format">Format</option>
+                    <option value="Kasa Değişimi">Kasa Değişimi</option>
+                    <option value="Ekran Değişimi">Ekran Değişimi</option>
+                    <option value="Diğer">Diğer</option>
+                </optgroup>
+            </select>
+            <label for="text">GuaranteeStatus</label>
+            <select id="text" name="GuaranteeStatus" value="@(Model?.Service?.GuaranteeStatus)>
+                <optgroup label="*">
+                    <option value="IT">IT</option>
+                    <option value="FrontEnd Developer">FrontEnd Developer</option>
+                    <option value="BackEnd Developer">BackEnd Developer</option>
+                    <option value="Sales And Management">Sales And Management</option>
+                    <option value="General Manager">General Manager</option>
+                    <option value="Director">Director</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                </optgroup>
+            </select>
+
+        </fieldset>
+        <input type="submit" value="Add Service"/>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+<h1>Servis Listesi</h1>
+<table class="table table-primary">
+    <tr>
+        <th>ID</th>
+        <th>Priority</th>
+        <th>Device Status</th>
+        <th>Personel Name</th>
+        <th>Service Worker</th>
+        <th>Date Entry</th>
+        <th>Deliver Entry</th>
+        <th>Delay Status</th>
+        <th>Service Reason</th>
+        <th>Changing Parts</th>
+        <th>Guarantee</th>
+        <th>Service History</th>
+        <th>Status</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr
+    @foreach (var service in Model?.Services)
+    {
+        <tr>
+            <td>@service.ServiceId</td>
+            <td>@service.ServicePriority</td>
+            <td>@service.DeviceStatus</td>
+            <td>@service?.Computer.Personal.PersonalNameSurname</td>
+            <td>@service?.ServiceWorker</td>
+            <td>@service?.DeviceDateEntry</td>
+            <td>@service?.DeviceDeliverEntry</td>
+            <td>@service?.ServiceDelayStatus</td> 
+            <td>@service?.DeviceServiceReason</td>
+            <td>@service?.DeviceChangingParts</td>
+            <td>@service?.GuaranteeStatus</td>
+            <td>@service?.DeviceServiceHistory</td> 
+            <td>@service?.ServisStatus</td> 
+            <td><a href="~/Service/DeleteService/@service?.ServiceId" class="btn btn-danger">Delete</a></td>
+            <td><a href="~/Service/EditService/@service?.ServiceId" class="btn btn-danger">Update</a></td>
+        </tr>
+    }
+</table>
+<br />
+<br />
+<a href="~/Service/AddService/" class="btn btn-primary">Add Service</a>

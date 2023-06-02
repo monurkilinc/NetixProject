@@ -1,0 +1,34 @@
+﻿@using EntityLayer.Concrete
+@model List<Personal>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+<h1>Personeller</h1>
+    <table class="table table-primary">
+        
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+    
+            @foreach (var personal in Model)
+            {
+            
+                <tr>
+                    <td>@personal.PersonalId</td>
+                    <td>@personal.PersonalNameSurname</td>
+                    <td>@personal.PersonalAge</td>
+                    <td>@personal.PersonalGender</td>
+                    <td>@personal.PersonalDepartment</td>
+                    <td>@personal.PersonalMail</td>
+                    <td>@personal.PersonalCellPhoneNumber</td>
+                </tr>
+            }
+       
+    </table>

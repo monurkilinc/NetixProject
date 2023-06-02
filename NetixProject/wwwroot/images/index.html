@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" ,initial-scla="1.0" />
+    <title>Netix Project AdminPage</title>
+
+    <!--Material CDN-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
+    <!--STYLESHEET-->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="images/logo1.png" />
+            <h1>
+              <span class="primary">OK</span><span class="danger">SK</span
+              ><span class="primary">UG</span>
+            </h1>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-sharp">close</span>
+          </div>
+        </div>
+        <div class="sidebar" class="">
+          <a href="#">
+            <span class="material-symbols-sharp">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#" class="active">
+            <span class="material-symbols-sharp">person</span>
+            <h3>Customers</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">list_alt</span>
+            <h3>Orders</h3>
+            <span class="order-count"></span>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">trending_up</span>
+            <h3>Analytics</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp close-mail">mail</span>
+            <span class="material-symbols-sharp open-mail">drafts</span>
+            <h3>Messages</h3>
+            <span class="message-count"></span>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">inventory</span>
+            <h3>Products</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">report</span>
+            <h3>Reports</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">settings</span>
+            <h3>Settings</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">add</span>
+            <h3>Add Products</h3>
+          </a>
+          <a href="#">
+            <span class="material-symbols-sharp">logout</span>
+            <h3>Log Out</h3>
+          </a>
+        </div>
+      </aside>
+
+      <!-------------- END OF A SIDE BAR -------------->
+
+      <!-------------- Dashboard -------------->
+      <main>
+        <h1>Dashboard</h1>
+        <div class="date">
+          <input type="date" />
+        </div>
+
+        <div class="insights">
+          <!-------------- Total Sales -------------->
+          <div class="sales">
+            <span class="material-symbols-sharp">point_of_sale</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Sales</h3>
+                <h1>$25.000</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>81%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last 24 hours</small>
+          </div>
+          <!-------------- End Of Total Sales -------------->
+
+          <!-------------- Total Expenses -------------->
+          <div class="Expenses">
+            <span class="material-symbols-sharp">leaderboard</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Expenses</h3>
+                <h1>$14.000</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>62%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last 24 hours</small>
+          </div>
+
+          <!-------------- End Of Total Expenses -------------->
+
+          <!-------------- Total Income -------------->
+          <div class="income">
+            <span class="material-symbols-sharp">savings</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Income</h3>
+                <h1>$10.000</h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>44%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last 24 hours</small>
+          </div>
+          <!-------------- End Of Total Income -------------->
+        </div>
+        <!-------------- End Of Total Sales -------------->
+
+        <!-------------- Recent Orders -------------->
+        <div class="recent-orders">
+          <h2>Recent Orders</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Product Number</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!---<tr>
+                <td>Drone</td>
+                <td>85631</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="success">Details</td>
+              </tr>
+              <tr>
+                <td>Drone</td>
+                <td>85631</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="success">Details</td>
+              </tr>
+              <tr>
+                <td>Drone</td>
+                <td>85631</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="success">Details</td>
+              </tr>
+              <tr>
+                <td>Drone</td>
+                <td>85631</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="success">Details</td>
+              </tr>
+              <tr>
+                <td>Drone</td>
+                <td>85631</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="success">Details</td>
+              </tr>-->
+            </tbody>
+          </table>
+
+          <a href="#">Show All</a>
+        </div>
+      </main>
+      <!-------------- End Of Recent Orders -------------->
+      <!-------------- End Of DASHBOARD -------------->
+
+      <!-------------- TOP -------------->
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">menu</span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Merheba, <b>Admin</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <img src="./images/profile-1.jpg" />
+            </div>
+          </div>
+        </div>
+        <!--------------END OF TOP -------------->
+        <div class="recent-updates">
+          <div class="card-updates">
+            <h2>Son Güncellemeler</h2>
+            <div class="updates">
+              <div class="update">
+                <div class="profile-photo">
+                  <img src="./images/profile-1.jpg" />
+                </div>
+                <div class="message">
+                  <p><b>Onur Kilinc</b> bilgisayar bilgilerini güncelledi.</p>
+                  <small class="text-muted">2 Minutes Ago</small>
+                </div>
+              </div>
+              <div class="update">
+                <div class="profile-photo">
+                  <img src="./images/profile-1.jpg" />
+                </div>
+                <div class="message">
+                  <p><b>Samet SELKİ</b> bilgisayar bilgilerini güncelledi.</p>
+                  <small class="text-muted">2 Minutes Ago</small>
+                </div>
+              </div>
+              <div class="update">
+                <div class="profile-photo">
+                  <img src="./images/profile-1.jpg" />
+                </div>
+                <div class="message">
+                  <p>
+                    <b>Abdullah SEISOGLU</b> bilgisayar bilgilerini güncelledi.
+                  </p>
+                  <small class="text-muted">2 Minutes Ago</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="service-list">
+            <h2>Servis Bilgileri</h2>
+            <div class="service-updates">
+              <div class="service-com">
+                <div class="icon">
+                  <span class="material-symbols-sharp">build</span>
+                </div>
+                <div class="right">
+                  <div class="info">
+                    <b><h3>Servisteki Bilgisayarlar</h3></b>
+                    <small class="text-muted">Last 1 Week</small>
+                  </div>
+                  <h5>100</h5>
+                </div>
+              </div>
+              <div class="service-delivered">
+                <div class="icon">
+                  <span class="material-symbols-sharp">local_shipping</span>
+                </div>
+                <div class="right">
+                  <div class="delivered">
+                    <h3>Teslim Edilen Bilgisayarlar</h3>
+                    <small class="text-muted">Last 1 Week</small>
+                  </div>
+
+                  <h3>100</h3>
+                </div>
+              </div>
+              <div class="sparepart">
+                <div class="icon">
+                  <span class="material-symbols-sharp">settings_b_roll</span>
+                </div>
+                <div class="right">
+                  <div class="sparepart-wait">
+                    <h3>Yedek Parça Bekleyen Bilgisayarlar</h3>
+                    <small class="text-muted">Last 1 Week</small>
+                  </div>
+                  <h3>100</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./orders.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

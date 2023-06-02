@@ -1,0 +1,45 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+
+@{
+    ViewData["Title"] = "PersonalListDashboard";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+<h1>Personel Listesi</h1>
+<br />
+<br />
+<table class="table table-primary">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Computer Brand</th>
+        <th>Mail</th>
+        <th>Phone</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Service</th>
+    </tr>
+    @foreach (var item in Model.Personals)
+    {
+        <tr>
+            <td>@item.PersonalId</td>
+            <td>@item.PersonalNameSurname</td>
+            <td>@item.PersonalAge</td>
+            <td>@item.PersonalGender</td>
+            <td>@item.PersonalDepartment</td>
+            <td>@(item?.Computer.ComputerBrand)-@(item?.Computer.ComputerSerialNo)</td>
+            <td>@item?.PersonalMail</td>
+            <td>@item?.PersonalCellPhoneNumber</td>
+            <td><a href="~/Personal/DeletePersonel/@item?.PersonalId" class="btn btn-danger">Delete</a></td>
+            <td><a href="~/Personal/EditPersonel/@item?.PersonalId" class="btn btn-danger">Update</a></td>
+            <td><a href="~/Service/EditService/@item?.PersonalId" class="btn btn-success">Service</a></td>
+        </tr>
+    }
+</table>
+<br />
+<br />
+<a href="~/Personal/AddPersonel/" class="btn btn-primary">Add Personel</a>
+
+

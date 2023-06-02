@@ -1,0 +1,30 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminDashboardLayout.cshtml";
+}
+<h1>Personeller</h1>
+<table class="table table-borderless">
+    <tr>
+        <th>ID</th>
+        <th>Name-Surname</th>
+        <th>Department</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Mail</th>
+        <th>Phone Number</th>
+        
+    </tr>
+    @foreach (var personal in Model?.Personals)
+    {
+        <tr>
+            <td>@personal.PersonalId</td>
+            <td>@personal.PersonalNameSurname</td>
+            <td>@personal.PersonalDepartment</td>
+            <td>@personal.PersonalGender</td>
+            <td>@personal.PersonalAge</td>
+            <td>@personal.PersonalMail</td>
+            <td>@personal.PersonalCellPhoneNumber</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,46 @@
+﻿@using EntityLayer.Concrete
+@model List<Personal>
+@{
+    ViewData["Title"] = "PersonalListDashboard";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+
+<h1>PersonalListDashboard</h1>
+<br />
+<br />
+<table class="table table-primary">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Computer Brand</th>
+        <th>Mail</th>
+        <th>Phone</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+
+            <td>@item.PersonalId</td>
+            <td>@item.PersonalNameSurname</td>
+            <td>@item.PersonalAge</td>
+            <td>@item.PersonalGender</td>
+            <td>@item.PersonalDepartment</td>
+            <td>@item.Computer.ComputerSerialNo</td>
+            <td>@item.PersonalMail</td>
+            <td>@item.PersonalCellPhoneNumber</td>
+            <td><a href="~/Personal/DeletePersonel/@item.PersonalId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Personal/EditPersonel/@item.PersonalId" class="btn btn-danger">Update</a></td>
+           
+        </tr>
+    }
+</table>
+<a href="#" class="btn btn-danger">Add Personaal</a>
+
+<a href="~/Personel/DeletePersonel/" class="btn btn-danger">Delete</a>
+

@@ -1,0 +1,37 @@
+﻿@model NetixProject1.Models.ComputerPersonalViewModel
+
+@{
+    ViewData["Title"] = "EditComputer";
+    Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
+}
+<h1>Bilgisayar Düzenleme Sayfası</h1>
+<br />
+<div class="form-style-5">
+    <form asp-action="EditComputer" method="post">
+        <fieldset>
+            <label for="text">Computer ID:</label>
+            <input type="text" name="ComputerId" value="@(Model?.Computer?.ComputerId)" placeholder="">
+            <label for="text">Computer Brand:</label>
+            <input type="text" name="ComputerBrand" value="@(Model?.Computer?.ComputerBrand)" placeholder="">
+            <label for="text">Computer Serial No:</label>
+            <input type="text" name="ComputerSerialNo" value="@(Model?.Computer?.ComputerSerialNo)" placeholder="">
+            <label for="text">Computer Year Of Production:</label>
+            <input type="text" name="ComputerYearOfProduction" value="@(Model?.Computer?.ComputerYearOfProduction)" placeholder="">
+            <select id="text" name="OperatingSystem">
+                <optgroup label="*">
+                    <option value="Windows">Windows</option>
+                    <option value="MacOS">MacOS</option>
+                    <option value="Linux">Linux</option>
+                </optgroup>
+            </select>
+            <label for="text">Ram:</label>
+            <input type="text" name="Ram" value="@(Model?.Computer?.Ram)" placeholder="">
+            <label for="text">CPU:</label>
+            <input type="text" name="CPU" value="@(Model?.Computer?.CPU)">
+            <label for="text">Graphic Card:</label>
+            <input type="text" name="GraphicCard" value="@(Model?.Computer?.GraphicCard)" placeholder="">
+        </fieldset>
+        <input type="submit" value="Update" />
+    </form>
+</div>
+
