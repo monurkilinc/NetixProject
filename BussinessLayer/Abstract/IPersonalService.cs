@@ -13,5 +13,6 @@ namespace BussinessLayer.Abstract
         List<Personal> GetListDetailAll();
         Personal TGetByID(int id);
         List<Personal> PersonalComputerDifference();
+        Personal GetPersonalByComputerId(int id);
     }
 }

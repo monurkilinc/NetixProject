@@ -29,7 +29,7 @@ namespace NetixProject1.Controllers
             var values=computerservice.GetListAll(id);
             var model = new ComputerPersonalViewModel
             {
-                Computers = (ICollection<Computer>)values,
+                Computer = values,
             };
             return View(model);
         }
@@ -65,7 +65,7 @@ namespace NetixProject1.Controllers
         }
         public IActionResult Create()
         {
-            var computer = computerservice.GetEmtyComputer();
+            var computer = computerservice.GetEmptyComputer();
             var viewModel = new ComputerPersonalViewModel()
             {
                 Computers = computer,

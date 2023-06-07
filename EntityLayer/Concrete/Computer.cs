@@ -11,7 +11,8 @@ namespace EntityLayer.Concrete
 {
     public class Computer
     {
-        [Key] 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ComputerId { get; set; }
 
         public string ComputerBrand { get; set; }
@@ -22,9 +23,7 @@ namespace EntityLayer.Concrete
         public string CPU { get; set; }
         public string GraphicCard { get; set; }
 
-        public int PersonalId { get; set; }
         public Personal Personal { get; set; }
-
         public List<Service> Services { get; set; }
     }
 }

@@ -156,12 +156,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DeviceStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("GuaranteeStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("PersonalId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("ServiceDelayStatus")
                         .HasColumnType("bit");
 
@@ -178,9 +172,61 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("ComputerId");
 
-                    b.HasIndex("PersonalId");
-
                     b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ServiceHistory", b =>
+                {
+                    b.Property<int>("ServiceHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceHistoryId"));
+
+                    b.Property<DateTime>("Deleted")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeviceChangingParts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DeviceDateEntry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeviceDeliverEntry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeviceProcessingTime")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeviceServiceHistory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceServiceReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ServiceDelayStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ServicePriority")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceWorker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ServisStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ServiceHistoryId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("ServiceHistories");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Personal", b =>
@@ -202,13 +248,17 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.Personal", "Personal")
-                        .WithMany()
-                        .HasForeignKey("PersonalId");
-
                     b.Navigation("Computer");
+                });
 
-                    b.Navigation("Personal");
+            modelBuilder.Entity("EntityLayer.Concrete.ServiceHistory", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Service", "Service")
+                        .WithMany("ServiceHistories")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Computer", b =>
@@ -216,6 +266,11 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Personal");
 
                     b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Service", b =>
+                {
+                    b.Navigation("ServiceHistories");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,21 +15,66 @@
             <input type="text" name="ComputerBrand" value="@(Model?.Computer?.ComputerBrand)" placeholder="">
             <label for="text">Computer Serial No:</label>
             <input type="text" name="ComputerSerialNo" value="@(Model?.Computer?.ComputerSerialNo)" placeholder="">
+
             <label for="text">Computer Year Of Production:</label>
-            <input type="text" name="ComputerYearOfProduction" value="@(Model?.Computer?.ComputerYearOfProduction)" placeholder="">
+            <select id="text" name="ComputerYearOfProduction" value="@(Model?.Computer?.ComputerYearOfProduction)" placeholder="">
+                <optgroup label="">
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </optgroup>
+            </select>
+
+            <label for="text">Operating System:</label>
             <select id="text" name="OperatingSystem">
-                <optgroup label="*">
+                <optgroup label="">
                     <option value="Windows">Windows</option>
                     <option value="MacOS">MacOS</option>
                     <option value="Linux">Linux</option>
                 </optgroup>
             </select>
+
             <label for="text">Ram:</label>
-            <input type="text" name="Ram" value="@(Model?.Computer?.Ram)" placeholder="">
+            <select id="text" name="Ram" value="@(Model?.Computer?.Ram)" placeholder="">
+            <optgroup label="">
+                <option value="16">16</option>
+                <option value="8">8</option>
+                <option value="32">32</option>
+                <option value="64">64</option>
+            </optgroup>
+            </select>
+
             <label for="text">CPU:</label>
-            <input type="text" name="CPU" value="@(Model?.Computer?.CPU)">
+            <select id="text" name="CPU" value="@(Model?.Computer?.CPU)">
+            <optgroup label="">
+                <option value="Intel Core i3 3.0GHz">Intel Core i3 3.0GHz</option>
+                <option value="Intel Core i3 3.7GHz">Intel Core i3 3.7GHz</option>
+                <option value="Intel Core i3-1115G4 Dual-Core 3.0GHz">Intel Core i3-1115G4 Dual-Core 3.0GHz</option>
+                <option value="Intel Core i7 2.7GHz">Intel i7 2.7GHz</option>
+                <option value="Intel Core i5 2.7GHz">Intel i5 2.7GHz</option>
+                <option value="Apple M1 Chip">Apple M1 Chip</option>
+                <option value="Apple M2 Max Chip">Apple M2 Max Chip</option>
+                <option value="AMD Ryzen 5 4600H">AMD Ryzen 5 4600H</option>
+            </optgroup>
+            </select>
+
             <label for="text">Graphic Card:</label>
-            <input type="text" name="GraphicCard" value="@(Model?.Computer?.GraphicCard)" placeholder="">
+            <select id="text" name="GraphicCard" value="@(Model?.Computer?.GraphicCard)" placeholder="">
+            <optgroup label="">
+                <option value="Intel UHD Graphics">Intel UHD Graphics</option>
+                <option value="Apple 8-core GPU">Apple 8-core GPUz</option>
+                <option value="Apple 30-core GPU">Apple 30-core GPUz</option>
+                <option value="GeForce GTX 1650 Ti">GeForce GTX 1650 Ti</option>
+                <option value="GeForce RTX 2060">GeForce RTX 2060</option>
+                <option value="GeForce GTX 1650">GeForce GTX 1650</option>
+                <option value=" Intel UHD Graphics 620"> Intel UHD Graphics 620</option>
+                <option value="Intel UHD Graphics">Intel UHD Graphics</option>
+            </optgroup>
+            </select>
+
         </fieldset>
         <input type="submit" value="Update" />
     </form>

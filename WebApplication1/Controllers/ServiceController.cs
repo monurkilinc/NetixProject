@@ -11,6 +11,7 @@ using DataAccessLayer.Concrete;
 using NetixProject1.Models;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.InkML;
 
 namespace NetixProject1.Controllers
 {
@@ -28,13 +29,13 @@ namespace NetixProject1.Controllers
             this.computerService = computerService;
            
         }
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            
+            var per=personalService.GetListAll();
             var values=serviceService.GetAllPersonelList();
-            
             var model = new ComputerPersonalViewModel
             {
+                Personals=per,
                 Services = values,
             };
             return View(model);
@@ -43,6 +44,7 @@ namespace NetixProject1.Controllers
         [HttpGet]
         public IActionResult AddService(int id)
         {
+           
             var values = serviceService.GetAllPersonelList();
             var model = new ComputerPersonalViewModel
             {
@@ -54,7 +56,6 @@ namespace NetixProject1.Controllers
         [HttpPost]
         public IActionResult AddService(Service p,int id)
         {
-            var personal= personalService.TGetByID(id);
             var computer = computerService.TGetById(id);
             p.ComputerId = computer.ComputerId; 
             serviceService.TAdd(p);
@@ -64,26 +65,48 @@ namespace NetixProject1.Controllers
         public IActionResult DeleteService([FromRoute]int id)
         {
             var values = serviceService.TGetById(id);
-            serviceService.TDelete(values);
+            var serviceHistory = new ServiceHistory()  
+            {
+                ServiceId = values.ServiceId,
+                ServiceWorker = values.ServiceWorker,
+                ServiceDelayStatus = values.ServiceDelayStatus,
+                DeviceStatus = values.DeviceStatus,
+                DeviceServiceReason = values.DeviceServiceReason,
+                DeviceChangingParts = values.DeviceChangingParts,
+                DeviceDateEntry = values.DeviceDateEntry,
+                DeviceDeliverEntry = values.DeviceDeliverEntry,
+                DeviceProcessingTime = values.DeviceProcessingTime,
+               
+            };
+
+            serviceService.TAdd(serviceHistory);
+            values.ServisStatus = false;  
+            serviceService.TUpdate(values);  
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult EditService([FromRoute] int id)
         {
-            var values = serviceService.GetListServiceAll(id);
+            var personel = personalService.GetPersonalByComputerId(id);
+            var values = serviceService.GetComputerListByID(id);
+           
             var model = new ComputerPersonalViewModel
             {
-                Service = values,
+               Personal = personel,
+               Service = values,
+              
             };
             return View(model);
-           
+
         }
         [HttpPost]
         public IActionResult EditService(Service p)
-        { 
+        {
             serviceService.TUpdate(p);
             return RedirectToAction("Index");
         }
-
+        
     }
+
 }
+

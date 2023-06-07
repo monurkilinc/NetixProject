@@ -11,14 +11,14 @@ namespace EntityLayer.Concrete
     public class Service
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ServiceId { get; set; }
-        
+
         public string ServicePriority { get; set; } 
         public string ServiceWorker { get; set; }
-        public bool ServisStatus { get; set; }
+        public bool ServisStatus { get; set; } = true;
         public bool ServiceDelayStatus { get; set; }
         public string DeviceStatus { get;set; }
-        public bool GuaranteeStatus { get; set; }
         public string DeviceServiceReason { get; set; }
         public string DeviceChangingParts { get; set; }
         public string DeviceServiceHistory { get; set; }
@@ -29,7 +29,8 @@ namespace EntityLayer.Concrete
         public int ComputerId { get; set; }
         public Computer Computer{ get; set; }
 
-        public Personal Personal { get; set; }  
-        
+        public ICollection<ServiceHistory> ServiceHistories { get; set; }
+
+
     }
 }

@@ -70,3 +70,32 @@ serviceList.forEach(service => {
     cell14.innerHTML = service.ComputerId;
     cell15.innerHTML = service.Computer.Personal.PersonalNameSurname;
 });
+$(document).ready(function () {
+    $('#toggleSwitch').change(function () {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                    });
+                    $('#serviceForm').submit(); // Form is submitted here
+                } else {
+                    swal("Your imaginary file is safe!");
+                    return false;
+                }
+            });
+        if ($(this).is(':checked')) {
+            $('#openBtn').prop('disabled', true);
+            $('#closeBtn').prop('disabled', false);
+        } else {
+            $('#openBtn').prop('disabled', false);
+            $('#closeBtn').prop('disabled', true);
+        }
+    });
+});

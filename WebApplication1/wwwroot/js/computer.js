@@ -17,7 +17,8 @@ let computer2 = new Computer("2", "Asus", "81X800eeee", "2021", "Windows", "16",
 computerList.push(computer1);
 computerList.push(computer2);
 
-let table = document.getElementById('computerTable').getElementsByTagName('tbody')[0];
+document.addEventListener("DOMContentLoaded", function () {
+    let table = document.getElementById('computerTable').getElementsByTagName('tbody')[0];
 
 computerList.forEach(computer => {
     let row = table.insertRow();

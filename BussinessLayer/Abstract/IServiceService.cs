@@ -9,9 +9,10 @@ namespace BussinessLayer.Abstract
 {
     public interface IServiceService : IGenericService<Service>
     {
-        
+       
         List<Service> GetAllPersonelList();
-        List<Service> GetComputerListByID(int id);
+        Service GetComputerListByID(int id);
         Service GetListServiceAll(int id);
+        void TAdd(ServiceHistory serviceHistory);
     }
 }

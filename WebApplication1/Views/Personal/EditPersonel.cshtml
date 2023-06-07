@@ -10,11 +10,14 @@
     <form asp-action="EditPersonel" method="post">
         <fieldset>
             <label for="text">Personal ID:</label>
-            <input type="text" name="PersonalId" value="@(Model?.Personal?.PersonalId)" placeholder="">
+            <input type="text" name="PersonalId" value="@(Model?.Personal?.PersonalId)" readonly>
+
             <label for="text">Personal Name:</label>
-            <input type="text" name="PersonalNameSurname" value="@(Model?.Personal?.PersonalNameSurname)" placeholder="">
+            <input type="text" name="PersonalNameSurname" value="@(Model?.Personal?.PersonalNameSurname)">
+
             <label for="text">Personal Age:</label>
-            <input type="text" name="PersonalAge" value="@(Model?.Personal?.PersonalAge)" placeholder="">
+            <input type="text" name="PersonalAge" value="@(Model?.Personal?.PersonalAge)">
+
             <label for="text">Personal Gender:</label>
             <select id="text" name="PersonalGender">
                 <optgroup label="*">
@@ -22,6 +25,7 @@
                     <option value="Kadın">Kadın</option>
                 </optgroup>
             </select>
+
             <label for="text">Personal Department:</label>
             <select id="text" name="PersonalDepartment">
                 <optgroup label="*">
@@ -34,18 +38,22 @@
                     <option value="Business Analyst">Business Analyst</option>
                 </optgroup>
             </select>
-            <label for="text">Computer Brand:</label>
-            <select id="text" name="Computer.ComputerBrand">
-                @if (Model != null && Model.Personal?.Computer != null)
-                            {
-                    <option value="@(Model?.Personal?.Computer.ComputerBrand) && @(Model?.Personal?.Computer.ComputerSerialNo)">@(Model?.Personal?.Computer.ComputerBrand)-@(Model?.Personal?.Computer.ComputerSerialNo)</option>
-                            }
-             </select>             
+
+            <label for="ComputerId">Computer Brand:</label>
+            <select id="ComputerId" name="ComputerId">
+                @foreach (var computer in Model.Computers)
+                {
+                    <option value="@computer.ComputerId">@computer.ComputerBrand-@computer.ComputerSerialNo</option>
+                }
+            </select>  
+             
             <label for="text">Personal Mail:</label>
-            <input type="text" name="PersonalMail" value="@(Model?.Personal?.PersonalMail)" placeholder="">
+            <input type="text" name="PersonalMail" value="@(Model?.Personal?.PersonalMail)">
+
             <label for="text">Personal Phone:</label>
-            <input type="text" name="PersonalCellPhoneNumber" value="@(Model?.Personal?.PersonalCellPhoneNumber)" placeholder="">
-        </fieldset>   
+            <input type="text" name="PersonalCellPhoneNumber" value="@(Model?.Personal?.PersonalCellPhoneNumber)">
+
+        </fieldset>
         <input type="submit" value="Update" />
     </form>
 </div>

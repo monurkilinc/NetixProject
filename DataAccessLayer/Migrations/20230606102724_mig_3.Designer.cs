@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230523072305_mig_add_computer_table_4")]
-    partial class mig_add_computer_table_4
+    [Migration("20230606102724_mig_3")]
+    partial class mig_3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,9 +59,15 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.Computer", b =>
                 {
                     b.Property<int>("ComputerId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ComputerId"));
+
                     b.Property<string>("CPU")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ComputerBrand")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ComputerSerialNo")
@@ -76,18 +82,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("OperatingSystem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonalId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Ram")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
                     b.HasKey("ComputerId");
-
-                    b.HasIndex("ServiceId");
 
                     b.ToTable("Computers");
                 });
@@ -123,6 +121,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("PersonalId");
 
+                    b.HasIndex("ComputerId")
+                        .IsUnique();
+
                     b.ToTable("Personals");
                 });
 
@@ -133,6 +134,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
+
+                    b.Property<int>("ComputerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeviceChangingParts")
                         .HasColumnType("nvarchar(max)");
@@ -155,9 +159,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("DeviceStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("GuaranteeStatus")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("ServiceDelayStatus")
                         .HasColumnType("bit");
 
@@ -172,36 +173,107 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("ServiceId");
 
+                    b.HasIndex("ComputerId");
+
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Computer", b =>
+            modelBuilder.Entity("EntityLayer.Concrete.ServiceHistory", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Personal", "Personal")
-                        .WithOne("Computer")
-                        .HasForeignKey("EntityLayer.Concrete.Computer", "ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ServiceHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasOne("EntityLayer.Concrete.Service", "Service")
-                        .WithMany("Computers")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceHistoryId"));
 
-                    b.Navigation("Personal");
+                    b.Property<DateTime>("Deleted")
+                        .HasColumnType("datetime2");
 
-                    b.Navigation("Service");
+                    b.Property<string>("DeviceChangingParts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DeviceDateEntry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeviceDeliverEntry")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeviceProcessingTime")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeviceServiceHistory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceServiceReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ServiceDelayStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ServicePriority")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceWorker")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ServisStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ServiceHistoryId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("ServiceHistories");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Personal", b =>
                 {
+                    b.HasOne("EntityLayer.Concrete.Computer", "Computer")
+                        .WithOne("Personal")
+                        .HasForeignKey("EntityLayer.Concrete.Personal", "ComputerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Computer");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Service", b =>
                 {
-                    b.Navigation("Computers");
+                    b.HasOne("EntityLayer.Concrete.Computer", "Computer")
+                        .WithMany("Services")
+                        .HasForeignKey("ComputerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Computer");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ServiceHistory", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Service", "Service")
+                        .WithMany("ServiceHistories")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Computer", b =>
+                {
+                    b.Navigation("Personal");
+
+                    b.Navigation("Services");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Service", b =>
+                {
+                    b.Navigation("ServiceHistories");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
-﻿using BussinessLayer.Abstract;
+﻿using BusinessLayer.Abstract;
+using BussinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Builder;
 
@@ -19,6 +20,8 @@ namespace NetixProject
         {
             services.AddMvc();
             services.AddSession();
+            services.AddControllersWithViews();
+
         }
         public void Configure(IApplicationBuilder app,IHostEnvironment env)
         {

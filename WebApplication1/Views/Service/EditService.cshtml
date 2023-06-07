@@ -8,10 +8,11 @@
     <form asp-action="EditService" method="post">
         <fieldset>
 
-            <label for="hidden">ComputerId:</label>
-            <input type="text" name="ComputerId" value="@(Model?.Service?.ComputerId)" placeholder="">
-               
-            <input type="hidden" name="ServiceId" value="@(Model?.Service?.ServiceId)" placeholder="">
+            <label for="ComputerId">ComputerId:</label>
+            <input type="text" name="ComputerId" value="@(Model.Personal?.ComputerId)" />
+            
+           
+            <input type="hidden" name="ServiceId" value="@(Model?.Service?.ServiceId)">
 
             <label for="text">Service Status:</label>
             <select id="text" name="ServisStatus" value="@(Model?.Service?.ServisStatus)">
@@ -25,22 +26,19 @@
                 <option value="Acil">Acil</option>
                 <option value="Normal">Normal</option>
             </select>
+
             <label for="text">Personal Name:</label>
-            <select id="text" name="Personal.PersonalNameSurname:">
-                @if (Model != null && Model?.Computer?.Personal != null)
-                {
-                    <option value="@(Model?.Computer?.Personal.PersonalNameSurname)">@(Model?.Service?.Computer.Personal.PersonalNameSurname)</option>
-                }
-            </select>
+            <input type="text" name="PersonalNameSurname" value="@(Model?.Personal?.PersonalNameSurname)">
+            
             <label for="text">Service Worker:</label>
-            <select id="text" name="Service Worker:" value="@(Model?.Service?.ServiceWorker)">
-                <optgroup label="*" >
-                    <option value="">Bülent Yentimur</option>
-                    <option value="">Osman Bilici</option>
-                    <option value="">Öyküm Mumuogulları</option>
-                    <option value="">Ahmet Konuk</option>
-                    <option value="">Safiye Şahin</option>
-                </optgroup>
+            <select id="text" name="ServiceWorker" value="@(Model?.Service?.ServiceWorker)">
+                
+                    <option value="Bülent Yentimur">Bülent Yentimur</option>
+                    <option value="Osman Bilici">Osman Bilici</option>
+                    <option value="Öyküm Mumuogullari">Öyküm Mumuogullari</option>
+                    <option value="Ahmet Konuk">Ahmet Konuk</option>
+                    <option value="Safiye Sahin">Safiye Sahin</option>
+                
             </select>
 
             <label for="text">Date Entry:</label>
@@ -69,13 +67,6 @@
                     <option value="Kasa Değişimi">Kasa Değişimi</option>
                     <option value="Ekran Değişimi">Ekran Değişimi</option>
                     <option value="Diğer">Diğer</option>
-                </optgroup>
-            </select>
-            <label for="text">Guarantee:</label>
-            <select id="text" name="GuaranteeStatus" value="@(Model?.Service?.GuaranteeStatus)">
-                <optgroup label="*">
-                    <option value="Süresi Bitti">Bitti</option>
-                    <option value="Devam Ediyor">Devam Ediyor</option>
                 </optgroup>
             </select>
             <label for="text">Service History:</label>

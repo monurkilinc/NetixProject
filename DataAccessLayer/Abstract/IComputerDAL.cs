@@ -9,8 +9,9 @@ namespace DataAccessLayer.Abstract
 {
     public interface IComputerDAL : IGenericDAL<Computer>
     {
+
         Computer GetListAll(int id);
-        List<Computer> GetEmtyComputer();
+        List<Computer>GetEmptyComputer();
      
     }
 }

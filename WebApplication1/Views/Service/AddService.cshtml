@@ -23,7 +23,7 @@
                     <option value="Normal">Normal</option>
             </select>
             <label for="text">Personal Name:</label>
-            <select id="text" name="Personal.PersonalNameSurname:">
+            <select id="text" name="PersonalNameSurname">
                         @if (Model != null && Model.Computer != null)
                         {
                     <option value="@(Model?.Computer?.Personal.PersonalNameSurname)">@(Model?.Service?.Computer.Personal.PersonalNameSurname)</option>
@@ -68,18 +68,7 @@
                     <option value="Diğer">Diğer</option>
                 </optgroup>
             </select>
-            <label for="text">GuaranteeStatus</label>
-            <select id="text" name="GuaranteeStatus" value="@(Model?.Service?.GuaranteeStatus)>
-                <optgroup label="*">
-                    <option value="IT">IT</option>
-                    <option value="FrontEnd Developer">FrontEnd Developer</option>
-                    <option value="BackEnd Developer">BackEnd Developer</option>
-                    <option value="Sales And Management">Sales And Management</option>
-                    <option value="General Manager">General Manager</option>
-                    <option value="Director">Director</option>
-                    <option value="Business Analyst">Business Analyst</option>
-                </optgroup>
-            </select>
+            
 
         </fieldset>
         <input type="submit" value="Add Service"/>

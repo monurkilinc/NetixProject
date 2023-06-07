@@ -12,6 +12,7 @@ namespace EntityLayer.Concrete
     public class Personal
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonalId { get; set; }
 
         public string PersonalNameSurname { get; set; }

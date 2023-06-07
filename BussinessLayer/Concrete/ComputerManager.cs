@@ -23,7 +23,7 @@ namespace BussinessLayer.Concrete
         }
         public Computer GetListAll(int id)
         {
-            return computerDAL.TGetById(id);
+            return computerDAL.GetListAll(id);
         }
         public List<Computer> GetListAll()
         { 
@@ -31,9 +31,7 @@ namespace BussinessLayer.Concrete
         }
         public void TAdd(Computer t)
         {
-           
               computerDAL.Insert(t);
-            
         }
         public void TDelete(Computer t)
         {
@@ -43,17 +41,17 @@ namespace BussinessLayer.Concrete
         {
             computerDAL.Update(t);
         }
-        public List<Computer> GetEmtyComputer(int id)
-        {
-            return computerDAL.GetListAll();
-        }
+       
         public Computer TGetById(int id)
         {
             return computerDAL.TGetById(id);
         }
-        public List<Computer> GetEmtyComputer()
+
+        public List<Computer> GetEmptyComputer()
         {
-            return computerDAL.GetListAll();
+            return computerDAL.GetEmptyComputer();
         }
+
+       
     }
 }

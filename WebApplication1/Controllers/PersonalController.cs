@@ -17,7 +17,7 @@ namespace NetixProject1.Controllers
             this.personalservice = personalservice;
             this.computerservice = computerservice;
         }
-        public IActionResult Index()
+        public IActionResult Index() 
         {
             var values = personalservice.GetListAll();
             var model = new ComputerPersonalViewModel
@@ -29,9 +29,11 @@ namespace NetixProject1.Controllers
         public IActionResult PersonalListDashboard()
         {
             
+            var values = personalservice.GetListDetailAll();
             var com=computerservice.GetListAll();
             var model = new ComputerPersonalViewModel
             {
+                Personals= values,
                 Computers=com,
               
             };
@@ -40,21 +42,21 @@ namespace NetixProject1.Controllers
         [HttpGet]
         public IActionResult AddPersonel([FromRoute] int id)
         {
-            var values = personalservice.GetListAll(id);
-            var model = new ComputerPersonalViewModel
+            var viewModel = new ComputerPersonalViewModel()
             {
-                Personals = (ICollection<Personal>)values,
+                Personals = personalservice.PersonalComputerDifference(),
+                Computers = computerservice.GetEmptyComputer()
             };
-            return View(model);
+            return View(viewModel);
         }
-    
         [HttpPost]
-        public IActionResult AddPersonel(Personal p)
+        public IActionResult AddPersonel(Personal p, int computerId)
         {
+           
+            p.ComputerId = computerId;
             personalservice.TAdd(p);
             return RedirectToAction("PersonalListDashboard");
         }
-        [HttpGet]
         public IActionResult DeletePersonel([FromRoute] int id)
         {
             var values = personalservice.TGetById(id);
@@ -65,27 +67,24 @@ namespace NetixProject1.Controllers
         public IActionResult EditPersonel(int id)
         {
             var personel = personalservice.GetListAll(id);
+           
+            var currentComputer = personel.Computer;
+            var availableComputers = computerservice.GetEmptyComputer().ToList();
+            availableComputers.Add(currentComputer);
             var model = new ComputerPersonalViewModel
             {
                 Personal = personel,
-                
+                Computers = availableComputers,
             };
             return View(model);
         }
         [HttpPost]
-        public IActionResult EditPersonel(Personal p)
+        public IActionResult EditPersonel(Personal p,int computerId)
         {
-              personalservice.TUpdate(p);
-              return RedirectToAction("PersonalListDashboard");
-        }
-        public ActionResult PersonalComputerDifference()
-        {
-            var viewModel = new ComputerPersonalViewModel() 
-            {
-                Computers = computerservice.GetEmtyComputer(),
-                Personals = personalservice.PersonalComputerDifference()
-            };
-            return View(viewModel);
+            var computer = computerservice.TGetById(computerId);
+            p.Computer = computer;
+            personalservice.TUpdate(p);
+            return RedirectToAction("PersonalListDashboard");
         }
     }   
 }

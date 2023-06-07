@@ -14,12 +14,13 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EFComputerRepository : GenericRepository<Computer>, IComputerDAL
     {
-        public List<Computer> GetEmtyComputer()
+        public List<Computer> GetEmptyComputer()
         {
             using (var c = new Context())
             {
-                var rep = c.Computers.ToList();
-                return rep;
+                var computers = c.Computers.Include(x => x.Personal).ToList();
+
+                return computers.Where(x => x.Personal == null).ToList();
             }
         }
         Computer IComputerDAL.GetListAll(int id)
@@ -30,6 +31,6 @@ namespace DataAccessLayer.EntityFramework
                 return rep;
             }
         }
-        
+
     }
 }

@@ -19,7 +19,7 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var c = new Context())
             { 
-                var rep=c.Personals.Include(x => x.Computer).Where(predicate: y => y.PersonalId == id).FirstOrDefault();
+                var rep=c.Personals.Include(x => x.Computer).Where(y => y.PersonalId == id).FirstOrDefault();
                 return rep;
             }
         }
@@ -29,6 +29,13 @@ namespace DataAccessLayer.EntityFramework
             using (var c = new Context())
             {
                 return c.Personals.Include(x => x.Computer).Where(predicate: y => y.PersonalId == id).FirstOrDefault();
+            }
+        }
+        Personal IPersonalDAL.GetPersonalByComputerId(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.Personals.Where(predicate: y => y.ComputerId == id).FirstOrDefault();
             }
         }
 
@@ -48,20 +55,12 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
+
         List<Personal> IPersonalDAL.PersonalComputerDifference()
         {
             using (var c = new Context())
             {
-                var test = c.Personals
-                   .Include(x => x.Computer)
-                   .ToList();
-
-                var personalIds = c.Personals
-                    .Include(x=>x.Computer)
-                    .Select(x => x.PersonalId)
-                    .ToList();
-
-                return c.Personals.Where(x => !personalIds.Contains(x.PersonalId)).ToList();
+                return c.Personals.Include(x => x.Computer).Where(x => x.Computer == null).ToList();
             }
         }
     }

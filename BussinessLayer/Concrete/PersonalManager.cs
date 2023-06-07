@@ -58,5 +58,12 @@ namespace BussinessLayer.Concrete
         {
             return personalDAL.GetListAll(id);
         }
+
+        Personal IPersonalService.GetPersonalByComputerId(int id)
+        {
+            return personalDAL.GetPersonalByComputerId(id);
+        }
+
+        
     }
 }

@@ -30,10 +30,22 @@ namespace DataAccessLayer.Concrete
                 .HasOne(x => x.Computer)
                 .WithOne(x => x.Personal)
                 .HasForeignKey<Personal>(x => x.ComputerId);
+
+            modelBuilder.Entity<Service>()
+                .HasMany(p => p.ServiceHistories)
+                .WithOne(b => b.Service)
+                .HasForeignKey(b => b.ServiceId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
+
+               
         }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Personal> Personals { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<ServiceHistory> ServiceHistories { get; set; }
+
+       
     }
 }

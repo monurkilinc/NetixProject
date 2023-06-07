@@ -9,8 +9,8 @@ namespace BussinessLayer.Abstract
 {
     public interface IComputerService : IGenericService<Computer>
     {
-        List<Computer> GetEmtyComputer();
-        List<Computer> GetEmtyComputer(int id);
+        List<Computer> GetEmptyComputer();
+        
         
     }
 }

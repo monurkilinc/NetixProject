@@ -8,10 +8,11 @@
 <div class="form-style-5">
     <form asp-action="AddPersonel" method="post">
         <fieldset>
+            
             <label for="text">Personal Name:</label>
-            <input type="text" name="PersonalNameSurname" value="@(Model?.Personal?.PersonalNameSurname)" placeholder="">
+            <input type="text" name="PersonalNameSurname" value="@(Model?.Personal?.PersonalNameSurname)" >
             <label for="text">Personal Age:</label>
-            <input type="text" name="PersonalAge" value="@(Model?.Personal?.PersonalAge)" placeholder="">
+            <input type="text" name="PersonalAge" value="@(Model?.Personal?.PersonalAge)">
             <label for="text">Personal Gender:</label>
             <select id="text" name="PersonalGender">
                 <optgroup label="*">
@@ -31,16 +32,13 @@
                     <option value="Business Analyst">Business Analyst</option>
                 </optgroup>
             </select>
-            <label for="text">Computer Brand:</label>
-            <input type="text" name="Computer.ComputerSerialNo" value="@(Model?.Personal?.Computer.ComputerSerialNo)" placeholder="">
-
-            @if (Model?.Computers != null)
-            {
+            <label for="ComputerId">Computer Brand:</label>
+            <select id="ComputerId" name="ComputerId">
                 @foreach (var computer in Model.Computers)
                 {
-                    <option value="@computer.ComputerSerialNo">@computer.ComputerBrand-@computer.ComputerSerialNo</option>
+                    <option value="@computer.ComputerId">@computer.ComputerBrand-@computer.ComputerSerialNo</option>
                 }
-            }
+            </select>
 
             <label for="text">Personal Mail:</label>
             <input type="text" name="PersonalMail" value="@(Model?.Personal?.PersonalMail)" placeholder="">

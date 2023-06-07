@@ -11,9 +11,10 @@ namespace DataAccessLayer.Abstract
     public interface IServiceDAL : IGenericDAL<Service>
     {
 
-        
+       
         List<Service> GetAllPersonelList();
-        List<Service> GetComputerListByID(int id);
+        Service GetComputerListByID(int id);
+        Service GetListAll(int id);
         Service GetListServiceAll(int id);
         
     }

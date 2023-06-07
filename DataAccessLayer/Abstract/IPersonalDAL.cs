@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         Personal GetID(int id);
         Personal GetListAll(int id);
         List<Personal> PersonalComputerDifference();
+        Personal GetPersonalByComputerId(int id);
     }
 }

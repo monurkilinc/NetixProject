@@ -21,12 +21,21 @@ namespace DataAccessLayer.EntityFramework
                 return res;
             }
         }
-
-        public List<Service> GetComputerListByID(int id)
+        
+        public Service GetComputerListByID(int id)
         {
             using (var c = new Context())
             {
-                var res = c.Services.Include(s => s.Computer).ThenInclude(x => x.Personal).Where(s => s.ComputerId == id).ToList();
+                var res = c.Services.Include(s => s.Computer).Where(s => s.ComputerId == id).FirstOrDefault();
+                return res;
+            }
+        }
+
+        Service IServiceDAL.GetListAll(int id)
+        {
+            using (var c = new Context())
+            {
+                var res = c.Services.Where(s => s.ServiceId == id).FirstOrDefault();
                 return res;
             }
         }

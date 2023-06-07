@@ -14,10 +14,11 @@ namespace BussinessLayer.Concrete
     public class ServiceManager : IServiceService
     {
         private readonly IServiceDAL serviceDAL;
-        
-        public ServiceManager(IServiceDAL ServiceDAL)
+        private readonly IServiceHistoryDAL servicehistoryDAL;
+
+        public ServiceManager(IServiceDAL ServiceDAL, IServiceHistoryDAL servicehistoryDAL)
         {
-            
+            this.servicehistoryDAL = servicehistoryDAL;   
             this.serviceDAL = ServiceDAL;
         }
         public void TAdd(Service t)
@@ -39,7 +40,7 @@ namespace BussinessLayer.Concrete
             return serviceDAL.GetAllPersonelList();
         }
        
-        public List<Service> GetComputerListByID(int id)
+        Service IServiceService.GetComputerListByID(int id)
         {
             return serviceDAL.GetComputerListByID(id);
         }
@@ -56,12 +57,19 @@ namespace BussinessLayer.Concrete
 
         public List<Service> GetListAll()
         {
-            throw new NotImplementedException();
+            return serviceDAL.GetListAll();
         }
 
         public Service GetListAll(int id)
         {
-            throw new NotImplementedException();
+            return serviceDAL.GetListAll(id);
+        }
+
+        public void TAdd(ServiceHistory serviceHistory)
+        {
+            servicehistoryDAL.Insert(serviceHistory);
         }
     }
+
+        
 }

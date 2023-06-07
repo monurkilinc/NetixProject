@@ -20,6 +20,7 @@
         <th>Delete</th>
         <th>Update</th>
         <th>Service</th>
+        <th>Add Personal</th>
     </tr>
     @foreach (var item in Model.Personals)
     {
@@ -34,12 +35,13 @@
             <td>@item?.PersonalCellPhoneNumber</td>
             <td><a href="~/Personal/DeletePersonel/@item?.PersonalId" class="btn btn-danger">Delete</a></td>
             <td><a href="~/Personal/EditPersonel/@item?.PersonalId" class="btn btn-danger">Update</a></td>
-            <td><a href="~/Service/EditService/@item?.PersonalId" class="btn btn-success">Service</a></td>
+            <td><a href="~/Service/EditService/@item?.ComputerId" class="btn btn-success">Service</a></td>
+            <td><a href="~/Personal/AddPersonel/" class="btn btn-success">Add</a></td>
         </tr>
     }
 </table>
 <br />
 <br />
-<a href="~/Personal/AddPersonel/" class="btn btn-primary">Add Personel</a>
+
 
 
