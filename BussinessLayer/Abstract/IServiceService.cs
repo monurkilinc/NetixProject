@@ -9,7 +9,6 @@ namespace BussinessLayer.Abstract
 {
     public interface IServiceService : IGenericService<Service>
     {
-       
         List<Service> GetAllPersonelList();
         Service GetComputerListByID(int id);
         Service GetListServiceAll(int id);

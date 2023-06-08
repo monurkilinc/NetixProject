@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
     public class ServiceHistory
     {
         [Key]
-        public int ServiceHisId { get; set; }
+        public int Id { get; set; }
         
         public string DeviceStatus { get; set; }
         public string ServiceWorker { get; set; }
@@ -21,10 +21,9 @@ namespace EntityLayer.Concrete
         public string DeviceChangingParts { get; set; }
         public int? DeviceProcessingTime { get; set; }
 
-        public string PersonalNameSurname; 
-        public Personal Personal { get; set; }
-
         public int ServiceId;
         public Service Service { get; set; }
+        //public Computer Computer { get; set; }
+        //public Personal Personal { get; set; }
     }
 }

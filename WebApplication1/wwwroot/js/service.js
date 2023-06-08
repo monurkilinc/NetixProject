@@ -7,7 +7,7 @@
     this.ServiceId = serviceId;
     this.ServicePriority = servicePriority;
     this.ServiceWorker = serviceWorker;
-    this.Computer.Personal.PersonalNameSurname = personalNameSurname
+    this.PersonalNameSurname = personalNameSurname;
     this.ServisStatus = servisStatus;
     this.ServiceDelayStatus = serviceDelayStatus;
     this.DeviceStatus = deviceStatus;
@@ -71,7 +71,8 @@ serviceList.forEach(service => {
     cell15.innerHTML = service.Computer.Personal.PersonalNameSurname;
 });
 $(document).ready(function () {
-    $('#toggleSwitch').change(function () {
+    $('.toggleSwitch').change(function () {
+        var checkBox = $(this);
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -84,18 +85,20 @@ $(document).ready(function () {
                     swal("Poof! Your imaginary file has been deleted!", {
                         icon: "success",
                     });
-                    $('#serviceForm').submit(); // Form is submitted here
+                    checkBox.closest('form').attr('action', '/Service/DeleteService/' + checkBox.data('id')); 
+                    checkBox.closest('form').submit();
                 } else {
                     swal("Your imaginary file is safe!");
-                    return false;
+                    checkBox.prop('checked', !checkBox.is(':checked')); 
+                    if (checkBox.is(':checked')) {
+                        checkBox.siblings('#openBtn').prop('disabled', true);
+                        checkBox.siblings('#closeBtn').prop('disabled', false);
+                    }
+                    else {
+                        checkBox.siblings('#openBtn').prop('disabled', false);
+                        checkBox.siblings('#closeBtn').prop('disabled', true);
+                    }
                 }
             });
-        if ($(this).is(':checked')) {
-            $('#openBtn').prop('disabled', true);
-            $('#closeBtn').prop('disabled', false);
-        } else {
-            $('#openBtn').prop('disabled', false);
-            $('#closeBtn').prop('disabled', true);
-        }
     });
 });

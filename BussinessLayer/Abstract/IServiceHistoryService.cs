@@ -13,6 +13,6 @@ namespace BusinessLayer.Abstract
         List<ServiceHistory> GetListAll();
         ServiceHistory GetById(int id);
         Task<List<ServiceHistory>> GetDeletedServices();
-        
+        Task<IEnumerable<ServiceHistory>> GetAllAsync();
     }
 }

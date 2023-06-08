@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/DashboardMenuLayout.cshtml";
 }
 <h1>Servis Listesi</h1>
-<table class="table table-primary">
+<table class="table table-primary" id="">
     <tr>
         <th>Status</th>
         <th>ID</th>
@@ -16,29 +16,24 @@
         <th>Deliver Entry</th>
         <th>Delay Status</th>
         <th>Service Reason</th>
-        <th>Changing Parts</th>
-        
+        <th>Changing Parts</th>      
         <th>Service History</th>
-        
-       
         <th>Update</th>
-        
-
+        <th>Delete</th>
     </tr
     @foreach (var service in Model?.Services)
     {
         <tr>
             <td>
             <form id="serviceForm" asp-action="ToggleServiceStatus" asp-controller="Service" asp-route-id="@service.ServiceId" method="post">
-            <label class="switch">
-             <input type="checkbox" class="toggleSwitch" id="toggleSwitch" @(service?.ServisStatus==true ? "checked" : "")>
-                <span class="slider round"></span>
-            </label>
-            <input type="submit" id="openBtn" value="" class="btn btn-primary" formaction="~/Service/OpenService/@(service?.ServiceId)">
-            <input type="submit" id="closeBtn" value="" class="btn btn-primary disabled @(service?.ServisStatus == true ? "disabled" : "")" formaction="~/Service/DeleteService/@(service?.ServiceId)">
+                <label class="switch">
+                    <input type="checkbox" class="toggleSwitch" id="toggleSwitch" data-id="@service.ServiceId" @(service?.ServisStatus==true ? "checked" : "")>
+                    <span class="slider round"></span>
+                </label>
+                <input type="submit" id="openBtn" value="" class="btn btn-primary" formaction="~/Service/OpenService/@(service?.ServiceId)">
+                <input type="submit" id="closeBtn" value="" class="btn btn-primary disabled @(service?.ServisStatus == true ? "disabled" : "")" formaction="~/Service/DeleteService/@(service?.ServiceId)">
             
             </form>
-
             </td>
             <td>@service.ServiceId</td>
             <td>@service.ServicePriority</td>
@@ -51,10 +46,8 @@
             <td>@service?.DeviceServiceReason</td>
             <td>@service?.DeviceChangingParts</td>
             <td>@service?.DeviceServiceHistory</td> 
-             
-            
             <td><a href="~/Service/EditService/@service?.ComputerId" class="btn btn-danger">Update</a></td>
-            
+            <td><a href="~/Service/DeleteService/@service?.ComputerId" class="btn btn-danger">Delete</a></td>
         </tr>
     }
 </table>

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Mapping;
 using BussinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Builder;
@@ -18,10 +19,10 @@ namespace NetixProject
         public IConfiguration Configuration { get; }
         public void ConfigureService(IServiceCollection services)
         {
-            services.AddMvc();
+           services.AddMvc();
             services.AddSession();
             services.AddControllersWithViews();
-
+            services.AddAutoMapper(typeof(Startup), typeof(ServiceProfile));
         }
         public void Configure(IApplicationBuilder app,IHostEnvironment env)
         {

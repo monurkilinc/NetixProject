@@ -17,16 +17,13 @@
         <th>Service Reason</th>
         <th>Changing Parts</th>
         <th>Device Processing Time</th>
-        
-      
-
     </tr
     @foreach (var service in Model?.ServiceHistories)
     {
         <tr>
-            <td>@service.ServiceHisId</td>
+            <td>@service.Id</td>
             <td>@service.ServiceId</td>
-            <td>@(service?.Personal?.PersonalNameSurname ?? "N/A")</td>
+            @*<td>@(service?.Personal?.PersonalNameSurname ?? "N/A")</td>*@
             <td>@service?.DeviceStatus</td>
             <td>@service?.ServiceWorker</td>
             <td>@service?.DeviceDateEntry</td>

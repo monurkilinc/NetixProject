@@ -19,6 +19,7 @@ namespace DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("server=DESKTOP-VLDGDG5;database=DbNetixProject1;Integrated Security=True;Trust Server Certificate=true;User Id=SA;Password={123456789};TrustServerCertificate=True");
             
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Service>()
@@ -37,15 +38,13 @@ namespace DataAccessLayer.Concrete
                 .HasForeignKey(b => b.ServiceId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
-
-               
+                
         }
+
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Personal> Personals { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<ServiceHistory> ServiceHistories { get; set; }
-
-       
     }
 }

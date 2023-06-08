@@ -1,4 +1,5 @@
-﻿using BussinessLayer.Abstract;
+﻿using AutoMapper;
+using BussinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DocumentFormat.OpenXml.Office2010.Excel;
@@ -13,13 +14,15 @@ namespace BussinessLayer.Concrete
 {
     public class ServiceManager : IServiceService
     {
+        private readonly IMapper _mapper;
         private readonly IServiceDAL serviceDAL;
         private readonly IServiceHistoryDAL servicehistoryDAL;
 
-        public ServiceManager(IServiceDAL ServiceDAL, IServiceHistoryDAL servicehistoryDAL)
+        public ServiceManager(IServiceDAL ServiceDAL, IServiceHistoryDAL serviceHistoryDAL, IMapper mapper)
         {
-            this.servicehistoryDAL = servicehistoryDAL;   
-            this.serviceDAL = ServiceDAL;
+            _mapper = mapper;
+            servicehistoryDAL = serviceHistoryDAL;   
+            serviceDAL = ServiceDAL;
         }
         public void TAdd(Service t)
         {
@@ -33,7 +36,6 @@ namespace BussinessLayer.Concrete
         {
             serviceDAL.Update(t);
         }
-
 
         public List<Service> GetAllPersonelList()
         {
@@ -70,6 +72,4 @@ namespace BussinessLayer.Concrete
             servicehistoryDAL.Insert(serviceHistory);
         }
     }
-
-        
 }

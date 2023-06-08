@@ -45,7 +45,5 @@ namespace DataAccessLayer.Repository
             c.Remove(t);
             c.SaveChanges();
         }
-
-        
     }
 }

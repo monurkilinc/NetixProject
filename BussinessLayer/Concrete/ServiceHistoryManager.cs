@@ -21,7 +21,11 @@ namespace BusinessLayer.Concrete
         public List<ServiceHistory> GetAll()
         {
             throw new NotImplementedException();
+        }
 
+        public Task<IEnumerable<ServiceHistory>> GetAllAsync()
+        {
+            return servicehistoryDAL.GetAllAsync();
         }
 
         public ServiceHistory GetById(int id)
@@ -63,7 +67,5 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

@@ -1,4 +1,4 @@
-function Personal(personalId, personalNameSurname, personalAge, personalGender, personalDepartment, ComputerBrand, personalMail, personalCellPhoneNumber) {
+function Personal(personalId, personalNameSurname, personalAge, personalGender, personalDepartment, computerBrand, personalMail, personalCellPhoneNumber) {
     this.PersonalId = personalId;
     this.PersonalNameSurname = personalNameSurname;
     this.PersonalAge = personalAge;
@@ -9,13 +9,7 @@ function Personal(personalId, personalNameSurname, personalAge, personalGender, 
     this.PersonalCellPhoneNumber = personalCellPhoneNumber;
 }
 
-let personalList = [];
-
-let personal1 = new Personal("1234", "Ahmet Yýlmaz", "35", "Male", "IT","abc", "ahmet.yilmaz@email.com", "+905551112233");
-let personal2 = new Personal("5678", "Ayþe Kaya", "27", "Female", "Sales","abc", "ayse.kaya@email.com", "+905551122334");
-
-personalList.push(personal1);
-personalList.push(personal2);
+personalList.push(Personal);
 
 let table = document.getElementById('personalTable').getElementsByTagName('tbody')[0];
 

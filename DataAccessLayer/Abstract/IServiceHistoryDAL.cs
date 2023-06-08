@@ -12,6 +12,6 @@ namespace DataAccessLayer.Abstract
         ServiceHistory GetById(int id);
         List<ServiceHistory> GetListAll();
         Task<List<ServiceHistory>> GetDeletedServices();
-
+        Task<IEnumerable<ServiceHistory>> GetAllAsync();
     }
 }
