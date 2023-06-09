@@ -49,6 +49,13 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
+        public List<Service> GetAllPersonelList()
+        {
+            using (var c = new Context())
+            {
+                return  c.Services.Include(s => s.Computer).ThenInclude(s => s.Personal).ToList();
+            }
+        }
     }
 
 }

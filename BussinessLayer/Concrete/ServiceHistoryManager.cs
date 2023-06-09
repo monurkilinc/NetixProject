@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             return servicehistoryDAL.GetAllAsync();
         }
 
+        public List<Service> GetAllPersonelList()
+        {
+            return servicehistoryDAL.GetAllPersonelList();
+        }
+
         public ServiceHistory GetById(int id)
         {
             return servicehistoryDAL.GetById(id);
@@ -47,6 +52,8 @@ namespace BusinessLayer.Concrete
         {
             return servicehistoryDAL.TGetById(id);
         }
+
+        
 
         public void TAdd(ServiceHistory t)
         {

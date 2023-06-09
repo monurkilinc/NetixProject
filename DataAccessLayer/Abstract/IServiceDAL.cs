@@ -16,6 +16,7 @@ namespace DataAccessLayer.Abstract
         Service GetComputerListByID(int id);
         Service GetListAll(int id);
         Service GetListServiceAll(int id);
+
         
     }
 }

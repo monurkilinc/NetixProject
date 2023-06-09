@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  netixproject1:
+    image: ${DOCKER_REGISTRY-}netixproject1
+    build:
+      context: .
+      dockerfile: WebApplication1\Dockerfile

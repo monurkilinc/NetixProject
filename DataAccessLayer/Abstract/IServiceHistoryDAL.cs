@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         List<ServiceHistory> GetListAll();
         Task<List<ServiceHistory>> GetDeletedServices();
         Task<IEnumerable<ServiceHistory>> GetAllAsync();
+        List<Service> GetAllPersonelList();
     }
 }

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EntityLayer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
