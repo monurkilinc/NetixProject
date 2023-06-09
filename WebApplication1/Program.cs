@@ -32,7 +32,6 @@ builder.Services.AddScoped<BussinessLayer.Abstract.IComputerService, BussinessLa
 builder.Services.AddAutoMapper(typeof(ServiceProfile));
 
 var app = builder.Build();
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

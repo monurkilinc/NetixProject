@@ -12,6 +12,6 @@ namespace DataAccessLayer.Abstract
 
         Computer GetListAll(int id);
         List<Computer>GetEmptyComputer();
-     
+        Computer GetLisPersonelServiceHistory(int id);
     }
 }

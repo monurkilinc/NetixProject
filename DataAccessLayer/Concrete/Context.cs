@@ -22,6 +22,8 @@ namespace DataAccessLayer.Concrete
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
             modelBuilder.Entity<Service>()
                 .HasOne(x => x.Computer)
                 .WithMany(x=> x.Services)
@@ -37,7 +39,7 @@ namespace DataAccessLayer.Concrete
                 .WithOne(b => b.Service)
                 .HasForeignKey(b => b.ServiceId)
                 .IsRequired(false)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
                 
         }
 

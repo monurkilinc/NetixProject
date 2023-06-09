@@ -16,7 +16,10 @@ namespace BusinessLayer.Mapping
             .ForMember(dest => dest.DeviceServiceReason, opt => opt.MapFrom(src => src.DeviceServiceReason))
             .ForMember(dest => dest.DeviceChangingParts, opt => opt.MapFrom(src => src.DeviceChangingParts))
             .ForMember(dest => dest.DeviceProcessingTime, opt => opt.MapFrom(src => src.DeviceProcessingTime))
-            .ForMember(dest => dest.ServiceId, opt => opt.MapFrom(src => src.ServiceId)); 
+            .ForMember(dest => dest.ServiceId, opt => opt.MapFrom(src => src.ServiceId))
+            .ForMember(dest => dest.ServicePriority, opt => opt.MapFrom(src => src.ServicePriority)) 
+            .ForMember(dest => dest.ComputerId, opt => opt.MapFrom(src => src.ComputerId)) 
+            .ForMember(dest => dest.ServisStatus, opt => opt.MapFrom(src => src.ServisStatus)); 
 
             //CreateMap<Service, ServiceDTO>().ReverseMap();
             //CreateMap<ServiceHistory, ServiceHistoryDTO>().ReverseMap();

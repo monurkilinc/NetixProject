@@ -24,7 +24,14 @@ namespace DataAccessLayer.EntityFramework
             using (var c = new Context())
             {
                 var res = c.ServiceHistories.ToList();
-                return res;
+                if (res != null)
+                {
+                    return res;
+                }
+                else
+                {
+                    return new List<ServiceHistory>();
+                }
             }
         }
         async Task<List<ServiceHistory>> IServiceHistoryDAL.GetDeletedServices()

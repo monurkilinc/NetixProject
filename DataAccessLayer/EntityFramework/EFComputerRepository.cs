@@ -23,6 +23,16 @@ namespace DataAccessLayer.EntityFramework
                 return computers.Where(x => x.Personal == null).ToList();
             }
         }
+
+        public Computer GetLisPersonelServiceHistory(int computerId)
+        {
+            using (var c = new Context())
+            {
+                var rep = c.Computers.Include(x=>x.Personal).Where(x => x.ComputerId == computerId).FirstOrDefault();
+                return rep;
+            }
+        }
+
         Computer IComputerDAL.GetListAll(int id)
         {
             using(var c= new Context())
@@ -31,6 +41,7 @@ namespace DataAccessLayer.EntityFramework
                 return rep;
             }
         }
+        
 
     }
 }

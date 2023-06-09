@@ -67,6 +67,7 @@ namespace NetixProject1.Controllers
         {
             var service =serviceService.GetComputerListByID(id);
             var serviceHistory = _mapper.Map<ServiceHistory>(service);
+            serviceHistory.Service = null;
             serviceHistoryService.TAdd(serviceHistory);
             serviceService.TDelete(service);
             return RedirectToAction("Index");

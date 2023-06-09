@@ -10,8 +10,7 @@ namespace BussinessLayer.Abstract
     public interface IComputerService : IGenericService<Computer>
     {
         List<Computer> GetEmptyComputer();
-        
-        
+        Computer GetLisPersonelServiceHistory(int id);
     }
 }
 

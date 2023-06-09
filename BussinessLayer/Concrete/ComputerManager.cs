@@ -51,7 +51,11 @@ namespace BussinessLayer.Concrete
         {
             return computerDAL.GetEmptyComputer();
         }
+        public Computer GetLisPersonelServiceHistory(int id)
+        {
+            return computerDAL.GetLisPersonelServiceHistory(id);
+        }
 
-       
+
     }
 }

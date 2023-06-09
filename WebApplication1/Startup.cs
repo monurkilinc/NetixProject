@@ -19,7 +19,7 @@ namespace NetixProject
         public IConfiguration Configuration { get; }
         public void ConfigureService(IServiceCollection services)
         {
-           services.AddMvc();
+            services.AddMvc();
             services.AddSession();
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof(Startup), typeof(ServiceProfile));

@@ -18,6 +18,7 @@ namespace NetixProject1.Controllers
         {
             var serviceHistories = servicehistoryservice.GetListAll();
             var deletedServices = await servicehistoryservice.GetDeletedServices();
+            
             var viewModel = new ComputerPersonalViewModel
             {
                 ServiceHistories = serviceHistories,

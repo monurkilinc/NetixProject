@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230606102724_mig_3")]
-    partial class mig_3
+    [Migration("20230609114540_mig_300_spartans")]
+    partial class mig_300_spartans
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,14 +180,14 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.ServiceHistory", b =>
                 {
-                    b.Property<int>("ServiceHistoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceHistoryId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Deleted")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ComputerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeviceChangingParts")
                         .HasColumnType("nvarchar(max)");
@@ -201,9 +201,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("DeviceProcessingTime")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeviceServiceHistory")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DeviceServiceReason")
                         .HasColumnType("nvarchar(max)");
 
@@ -213,7 +210,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("ServiceDelayStatus")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ServiceId")
+                    b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
                     b.Property<string>("ServicePriority")
@@ -225,7 +222,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("ServisStatus")
                         .HasColumnType("bit");
 
-                    b.HasKey("ServiceHistoryId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ServiceId");
 
